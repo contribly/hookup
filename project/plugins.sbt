@@ -8,6 +8,6 @@
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.3")
 
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.9")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.4")
 
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.3.2")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.7.0")
