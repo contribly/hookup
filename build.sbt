@@ -8,8 +8,6 @@ version := "0.4.3-SNAPSHOT"
 
 scalaVersion := "2.12.7"
 
-crossScalaVersions := Seq("2.10.5", "2.11.7")
-
 compileOrder := CompileOrder.ScalaThenJava
 
 libraryDependencies ++= Seq(
