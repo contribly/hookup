@@ -29,10 +29,9 @@ class CookieSet(message: Message) extends
       HttpHeaders.Names.SET_COOKIE
 
   private[this] val cookies: mutable.Set[CookieWrapper] = {
-    val decoder = new ServerCookieDecoder
     val res = Option(message.headers.get(cookieHeaderName)) map { cookieHeader =>
       try {
-        (decoder.decode(cookieHeader).asScala map { c => new CookieWrapper(c) }).toSet
+        (ServerCookieDecoder.STRICT.decode(cookieHeader).asScala map { c => new CookieWrapper(c) }).toSet
       } catch {
         case e: IllegalArgumentException =>
           _isValid = false
@@ -70,8 +69,7 @@ class CookieSet(message: Message) extends
 
     // Add cookies back again
     cookies foreach { cookie =>
-      val cookieEncoder = new ServerCookieEncoder()
-      message.headers.add(cookieHeaderName, cookieEncoder.encode(cookie.cookie))
+      message.headers.add(cookieHeaderName, ServerCookieEncoder.STRICT.encode(cookie.cookie))
     }
   }
 
